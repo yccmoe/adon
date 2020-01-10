@@ -1,0 +1,13 @@
+﻿## Interface: 80200
+## X-Min-Interface: 80200
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Voicepack mununyu|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0음성팩 무뉴뉴|r
+## DefaultState: enabled
+## RequiredDeps: DBM-Core
+## Author: mununyu
+## Version: 1.6
+## X-DBM-Voice: 1
+## X-DBM-Voice-Name: 무뉴뉴 (Korean Female)
+## X-DBM-Voice-ShortName: Mununyu
+## X-DBM-Voice-Version: 8
+## X-DBM-Voice-HasCount: 1

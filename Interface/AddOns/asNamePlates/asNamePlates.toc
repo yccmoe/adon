@@ -1,0 +1,6 @@
+﻿## Interface: 80200
+## Author: |cffff3399아스필라|r [블랙무어]
+## Title: |cffff3399as|rNamePlates
+## Notes: NamePlates 강화
+## Version : 160722
+asNamePlates.xml

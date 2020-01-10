@@ -1,0 +1,6 @@
+﻿## Interface: 80200
+## Author: |cffff3399아스필라|r [블랙무어]
+## Title: |cffff3399as|rTooltip
+## Notes: Tooltip 이동
+## Version : 161023
+asTooltip.lua

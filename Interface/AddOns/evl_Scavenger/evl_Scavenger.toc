@@ -1,0 +1,11 @@
+## Interface: 80200
+## Title: Evl's Scavenger
+## Author: Evl
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Curse-Packaged-Version: 2.5.7
+## X-Curse-Project-Name: Evl's Addons
+## X-Curse-Project-ID: evl
+## X-Curse-Repository-ID: wow/evl/mainline
+
+evl_Scavenger.lua
