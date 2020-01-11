@@ -1,0 +1,27 @@
+lightweight tag 3c777808ddf4f3f0295f2cdf76919f6afcd12bfe 1.31
+Author:	Bernhard Saumweber <b.saumweber@gmail.com>
+Date:	Tue Sep 17 20:39:44 2019 +0200
+
+commit 3c777808ddf4f3f0295f2cdf76919f6afcd12bfe
+Author: Bernhard Saumweber <b.saumweber@gmail.com>
+Date:   Tue Sep 17 20:39:44 2019 +0200
+
+    Fixes #24 by adding keywords rionormalprogress, rioheroicprogress, riomythicprogress, riomainprogress, rionormalkills, rioheroickills, riomythickills and rioraidbosscount
+
+commit b49ee919717b831f4843c2249f7ce3de06acae3a
+Author: romdeau23 <43295566+romdeau23@users.noreply.github.com>
+Date:   Mon Sep 16 23:40:00 2019 +0200
+
+    More filter expressions: myilvl and partyfit (#26)
+    
+    * Implement myilvl, rolefit and partyfit advanced expressions
+    * Apply suggestions from code review
+    Co-Authored-By: Bernhard Saumweber <b.saumweber@gmail.com>
+    * Remove rolefit, add translations
+
+commit c2c9e21c47b0d4598e04fcbd4c15ef1c13d2686a
+Author: Bernhard Saumweber <b.saumweber@gmail.com>
+Date:   Sun Sep 8 17:08:23 2019 +0200
+
+    Set version to next release version: 1.31
+
