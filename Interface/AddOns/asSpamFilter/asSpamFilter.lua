@@ -1,4 +1,4 @@
-local ASF_MaxTime = 4; 			--4초 뒤에도 같은 Message면 보이게
+local ASF_MaxTime = 10; 			--4초 뒤에도 같은 Message면 보이게
 local ASF_X = 300;
 local ASF_Y = 120;
 

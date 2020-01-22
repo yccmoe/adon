@@ -2,6 +2,5 @@
 ## Title: sp2ll
 ## Notes: 간단한 스펠 차단 알림
 ## Author: 얌츤츤
-## Modifier: Xhaka
 ## Version: 2018.09.03
 sp2ll.lua
