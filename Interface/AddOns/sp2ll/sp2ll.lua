@@ -10,3 +10,6 @@ elseif sourceGUID == UnitGUID("player") and combatEvent=="SPELL_DISPEL" and (bit
     SendChatMessage(destName.."의 "..GetSpellLink(param1).." 해제", "say") -- 해제(아군) Dispel(friendly)
 end 
 end)
+
+MainMenuBarArtFrame.LeftEndCap:Hide()
+MainMenuBarArtFrame.RightEndCap:Hide()
