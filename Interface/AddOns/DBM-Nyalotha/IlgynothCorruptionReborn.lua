@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(2374, "DBM-Nyalotha", nil, 1180)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200120030400")
+mod:SetRevision("20200128041711")
 mod:SetCreatureID(158328)
 mod:SetEncounterID(2345)
 mod:SetZone()
@@ -61,14 +61,14 @@ local specWarnPumpingBlood					= mod:NewSpecialWarningInterruptCount(310788, "Ha
 
 --mod:AddTimerLine(BOSS)
 --Stage 01: The Corruptor, Reborn
-local timerEyeofNZothCD						= mod:NewCDTimer(17, 309961, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON, nil, 2, 4)--16.6-17.4 (0ld), new seems more stable 17
+local timerEyeofNZothCD						= mod:NewCDTimer(17, 309961, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON, nil, 2, 3)--16.6-17.4 (0ld), new seems more stable 17
 local timerTouchoftheCorruptorCD			= mod:NewCDTimer(64.4, 311401, nil, nil, nil, 3, nil, DBM_CORE_HEROIC_ICON, nil, 1, 4)--64.4-68
 local timerCorruptorsGazeCD					= mod:NewCDTimer(32.8, 310319, nil, nil, nil, 3)--32.8-34
 --Stage 02: The Organs of Corruption
 local timerCursedBloodCD					= mod:NewNextTimer(18, 311159, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)
 local timerAbsorbingChargeCD				= mod:NewAITimer(18, 318383, nil, nil, nil, 5, nil, DBM_CORE_TANK_ICON)
 
---local berserkTimer						= mod:NewBerserkTimer(600)
+local berserkTimer							= mod:NewBerserkTimer(600)
 
 mod:AddRangeFrameOption(11, 311159)
 mod:AddInfoFrameOption(315094, true)
@@ -191,6 +191,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(castsPerGUID)
 	timerEyeofNZothCD:Start(5.2-delay)--START
 	timerCorruptorsGazeCD:Start(12.2-delay)
+	berserkTimer:Start(600-delay)--Confirmed heroic and normal
 	if self:IsHard() then
 		timerTouchoftheCorruptorCD:Start(50.7-delay)--SUCCESS
 		if self:IsMythic() then
@@ -305,7 +306,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif spellId == 311367 then
-		warnTouchoftheCorruptor:CombinedShow(0.3, args.destName)
+		warnTouchoftheCorruptor:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
 			specWarnTouchoftheCorruptor:Show()
 			specWarnTouchoftheCorruptor:Play("targetyou")
