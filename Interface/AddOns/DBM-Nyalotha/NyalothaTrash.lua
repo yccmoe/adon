@@ -1,11 +1,10 @@
 local mod	= DBM:NewMod("NyalothaTrash", "DBM-Nyalotha", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200129031518")
+mod:SetRevision("20200211040655")
 --mod:SetModelID(47785)
 mod:SetZone()
 mod.isTrashMod = true
---mod:SetUsedIcons(1, 2, 3, 4, 5)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START 310780 315011 159409 310839 315932 311550 311576 307403 306982 311544 314433",
@@ -31,7 +30,7 @@ local specWarnAnnihilation					= mod:NewSpecialWarningDodgeCount(307403, nil, DB
 local specWarnDirgefromBelow				= mod:NewSpecialWarningInterrupt(310839, "HasInterrupt", nil, nil, 1, 2)
 local specWarnVoidBoltVolley				= mod:NewSpecialWarningInterrupt(311576, "HasInterrupt", nil, nil, 1, 2)
 
---mod:AddSetIconOption("SetIconDread", 303619, true, false, {1, 2, 3, 4, 5})
+local playerName = UnitName("player")
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
@@ -57,6 +56,8 @@ function mod:SPELL_CAST_START(args)
 		specWarnFeartheVoid:Show()
 		specWarnFeartheVoid:Play("fearsoon")
 	elseif (spellId == 307403 or spellId == 306982) and self:AntiSpam(3, args.sourceName) then--Enemy, Player
+		if spellId == 306982 and args.sourceName == playerName then return end--Don't warn, you're the caster
+		--Can't filter/smart warn tanking though, well could but it'd be ugly without boss unit ID to fall on, so skipped for trash. Boss will use smarter warnings
 		specWarnAnnihilation:Show(args.sourceName)
 		specWarnAnnihilation:Play("shockwave")
 	elseif spellId == 310839 and self:CheckInterruptFilter(args.sourceGUID, false, true) then

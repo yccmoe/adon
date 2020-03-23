@@ -1,10 +1,12 @@
 if GetLocale() ~= "zhTW" then return end
 DBM_DEADLY_BOSS_MODS				= "Deadly Boss Mods"
 DBM_DBM								= "DBM"
-local day, _, month = C_DateAndTime.GetCurrentCalendarTime()
-if day == 1 and month == 4 then
-	DBM_DEADLY_BOSS_MODS				= "Harmless Boss Mods"
-	DBM_DBM								= "HBM"
+if C_DateAndTime and C_DateAndTime.GetCurrentCalendarTime then
+	local day, _, month = C_DateAndTime.GetCurrentCalendarTime()
+	if day and month and day == 1 and month == 4 then
+		DBM_DEADLY_BOSS_MODS				= "Harmless Boss Mods"
+		DBM_DBM								= "HBM"
+	end
 end
 
 DBM_HOW_TO_USE_MOD							= "歡迎使用"..DBM_DBM.."。在聊天頻道輸入 /dbm 打開設定開始設定。你可以載入特定區域後為任何首領設定你喜歡的特別設置。DBM會在設定你的職業天賦的預設值，但有些選項可能需要調整。"
@@ -286,6 +288,7 @@ DBM_CORE_NORTH					= "北"
 DBM_CORE_SOUTH					= "南"
 DBM_CORE_INTERMISSION		= "中場時間"
 DBM_CORE_ORB							= "球"
+DBM_CORE_ORBS						= "球"
 DBM_CHEST									= "獎勵箱"
 DBM_NO_DEBUFF						= "沒有%s"
 DBM_ALLY									= "隊友"
@@ -334,6 +337,7 @@ DBM_CORE_AUTO_ANNOUNCE_TEXTS.adds				= "%s還剩下:%%d"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.cast					= "施放%s:%.1f秒"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.soon				= "%s即將到來"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.sooncount		= "%s (%%s)即將到來"
+DBM_CORE_AUTO_ANNOUNCE_TEXTS.countdown	= "%s還有%%ds"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.prewarn			= "%s在%s"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.bait					= "%s即將到來 - 快引誘"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.stage				= "第%s階段"
@@ -355,6 +359,7 @@ DBM_CORE_AUTO_ANNOUNCE_OPTIONS.adds				= "警告：$spell:%s剩餘數量"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.cast				= "警告：$spell:%s的施放"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.soon				= prewarnOption
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.sooncount		= prewarnOption
+DBM_CORE_AUTO_ANNOUNCE_OPTIONS.countdown	= "預先警告：$spell:%s的倒數計時訊息"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.prewarn			= prewarnOption
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.bait				= "警告：$spell:%s去引誘的預先警告"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.stage				= "警告：第%s階段"
@@ -525,7 +530,7 @@ DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.count	= "" .. UnitName("player") .. "中了%s(%
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.fade	= "%s %%d秒後消退!"
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.shortfade	= "%%d"
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.iconfade		= "{rt%%2$d}%%1$d"
-DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.position = UnitName("player").." ({rt%%3$d})中了%1$s! (%%1$s - {rt%%2$d})" 
+DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.position = UnitName("player").." ({rt%%3$d})中了%1$s! (%%1$s - {rt%%2$d})"
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.combo			= "%s與%%s"--Spell name (from option, plus spellname given in arg)
 
 DBM_CORE_AUTO_YELL_CUSTOM_FADE			= "%s已消退"

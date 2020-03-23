@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod(2367, "DBM-Nyalotha", nil, 1180)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200128210208")
+mod:SetRevision("20200311164649")
 mod:SetCreatureID(157231)
 mod:SetEncounterID(2335)
 mod:SetZone()
 mod:SetUsedIcons(4, 3, 2, 1)
-mod:SetHotfixNoticeRev(20200127000000)--2020, 1, 26
-mod:SetMinSyncRevision(20200127000000)
+mod:SetHotfixNoticeRev(20200205000000)--2020, 2, 5
+mod:SetMinSyncRevision(20200205000000)
 --mod.respawnTime = 29
 
 mod:RegisterCombat("combat")
@@ -15,16 +15,15 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 312528 306928 312529 306929 307260 306953 318078 312530 306930 307478 307476",
 	"SPELL_CAST_SUCCESS 312528 306928 312529 306929 312530 306930",
-	"SPELL_AURA_APPLIED 312328 312329 307471 307472 307358 306942 318078 308149 312099 306447 306931 306933",
+	"SPELL_AURA_APPLIED 312328 312329 307471 307472 307358 306942 318078 314736 312099 306447 306931 306933",
 	"SPELL_AURA_APPLIED_DOSE 312328 307358 307471",
 	"SPELL_AURA_REMOVED 312328 307358 306447 306933 306931",
 	"SPELL_AURA_REMOVED_DOSE 312328 307358 307472",
---	"SPELL_PERIODIC_DAMAGE",
---	"SPELL_PERIODIC_MISSED",
---	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"SPELL_PERIODIC_DAMAGE 314736",
+	"SPELL_PERIODIC_MISSED 314736",
 	"UNIT_SPELLCAST_SUCCEEDED boss1",
 	"UNIT_SPELLCAST_START boss1",
-	"UNIT_POWER_FREQUENT boss1"
+	"UNIT_POWER_UPDATE boss1"
 )
 
 --TODO, add tracking of tasty Morsel carriers to infoframe?
@@ -43,27 +42,27 @@ local warnBubblingOverflow					= mod:NewCountAnnounce(314736, 2)
 local warnEntropicMantle					= mod:NewSpellAnnounce(306933, 2)
 local warnCrush								= mod:NewTargetNoFilterAnnounce(307471, 3, nil, "Tank")
 local warnDissolve							= mod:NewTargetNoFilterAnnounce(307472, 3, nil, "Tank")
-local warnDebilitatingSpit					= mod:NewTargetNoFilterAnnounce(307358, 3, nil, false)
+local warnDebilitatingSpit					= mod:NewTargetNoFilterAnnounce(307358, 3, nil, false, 58519)
 local warnFrenzy							= mod:NewTargetNoFilterAnnounce(306942, 2)
-local warnFixate							= mod:NewTargetAnnounce(307260, 2)
+local warnFixate							= mod:NewTargetCountAnnounce(307260, 2)
 local warnEntropicBuildup					= mod:NewCountAnnounce(308177, 2)
 local warnEntropicBreath					= mod:NewSpellAnnounce(306930, 2, nil, "Tank")
 local warnTastyMorsel						= mod:NewTargetNoFilterAnnounce(312099, 1)
 
-local specWarnUncontrollablyRavenous		= mod:NewSpecialWarningSpell(312329, nil, nil, nil, 3, 2)--Mythic
+local specWarnUncontrollablyRavenous		= mod:NewSpecialWarningSpell(312329, nil, nil, nil, 3, 2, 4)--Mythic
 local specWarnCrushTaunt					= mod:NewSpecialWarningTaunt(307471, nil, nil, nil, 3, 2)
 local specWarnDissolveTaunt					= mod:NewSpecialWarningTaunt(307472, nil, nil, nil, 1, 2)
 local specWarnSlurryBreath					= mod:NewSpecialWarningDodge(306736, nil, nil, nil, 2, 2)
-local specWarnDebilitatingSpit				= mod:NewSpecialWarningYou(307358, nil, nil, nil, 1, 2)
+local specWarnDebilitatingSpit				= mod:NewSpecialWarningYou(307358, nil, 58519, nil, 1, 2)
 local specWarnFixate						= mod:NewSpecialWarningRun(307260, nil, nil, nil, 4, 2)
 local yellFixate							= mod:NewYell(307260, nil, true, 2)
 local specWarnUmbralEruption				= mod:NewSpecialWarningDodge(308157, false, nil, 2, 2, 2)--Because every 8-10 seconds is excessive, let user opt in for this
-local specWarnGTFO							= mod:NewSpecialWarningGTFO(308149, nil, nil, nil, 1, 8)
+local specWarnGTFO							= mod:NewSpecialWarningGTFO(314736, nil, nil, nil, 1, 8)
 
 local timerCrushCD							= mod:NewCDTimer(25.1, 307471, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON, nil, 2, 3)
 local timerSlurryBreathCD					= mod:NewCDTimer(17, 306736, nil, nil, nil, 3, nil, nil, nil, 1, 3)
-local timerDebilitatingSpitCD				= mod:NewCDTimer(30.1, 306953, nil, nil, nil, 5, nil, DBM_CORE_HEALER_ICON)
-local timerFixateCD							= mod:NewCDTimer(30.2, 307260, nil, nil, nil, 3, nil, DBM_CORE_DAMAGE_ICON)
+local timerDebilitatingSpitCD				= mod:NewCDTimer(30.1, 306953, 58519, nil, nil, 5, nil, DBM_CORE_HEALER_ICON)
+local timerFixateCD							= mod:NewCDCountTimer(30.2, 307260, nil, nil, nil, 3, nil, DBM_CORE_DAMAGE_ICON)
 local timerUmbralEruptionCD					= mod:NewNextTimer(10, 308157, nil, nil, nil, 3, nil, DBM_CORE_HEROIC_ICON)
 local timerBubblingOverflowCD				= mod:NewNextTimer(10, 314736, nil, nil, nil, 3, nil, DBM_CORE_HEROIC_ICON)
 local timerEntropicBuildupCD				= mod:NewNextTimer(10, 308177, nil, nil, nil, 5, nil, DBM_CORE_HEROIC_ICON)
@@ -80,7 +79,9 @@ mod.vb.bubblingCount = 0
 mod.vb.buildupCount = 0
 mod.vb.fixateCount = 0
 mod.vb.bossPowerUpdateRate = 4
-mod.vb.comboCount = 0
+mod.vb.firstCrush = nil
+mod.vb.firstDissolve = nil
+local playerName = UnitName("player")
 local SpitStacks = {}
 local orbTimersHeroic = {4, 22, 25, 28, 21, 26}
 local orbTimersNormal = {4, 25, 25, 25, 25}
@@ -124,28 +125,34 @@ local function entropicBuildupLoop(self)
 end
 
 local function updateBreathTimer(self, start)
-	--Update Breath timer
+	self:Unschedule(updateBreathTimer)
+	--Start or Update Breath timer
 	local bossPower = UnitPower("boss1")
 	if bossPower == 100 then--Don't start a timer if full energy
 		timerSlurryBreathCD:Stop()
-		DBM:Debug("Boss power was full, so updateBreathTimer exited with no timer update")
+		DBM:Debug("Boss power was full, so updateBreathTimer scheduled another check in 1 second")
+		self:Schedule(1, updateBreathTimer, self, start)--check again up until energy is not 100
 		return
 	end
-	local breathTimerTotal = 100 / self.vb.bossPowerUpdateRate
-	local bossProgress = (100 - bossPower) / self.vb.bossPowerUpdateRate
-	--Using update method to both start a new timer and update an existing one because it supports both
-	timerSlurryBreathCD:Update(bossProgress, breathTimerTotal)
-	DBM:Debug("updateBreathTimer fired with: "..bossProgress..", "..breathTimerTotal)
-	--[[if start then
-		timerSlurryBreathCD:Start(breathTimerTotal)
-	else
+	local bossRemaining = (100 - bossPower) / self.vb.bossPowerUpdateRate
+	if start then--Starting a new bar
+		timerSlurryBreathCD:Start(bossRemaining)
+		DBM:Debug("updateBreathTimer started with: "..bossRemaining)
+	else--Updating an existing bar instead of starting new/replacing
+		local breathTimerTotal = 100 / self.vb.bossPowerUpdateRate
+		local bossProgress = breathTimerTotal - bossRemaining
+		DBM:Debug("updateBreathTimer unadjusted timers: "..bossProgress..", "..breathTimerTotal)
+		--Adjust to 10th decimal only
+		bossProgress = math.floor(bossProgress*10)/10
+		breathTimerTotal = math.floor(breathTimerTotal*10)/10
 		timerSlurryBreathCD:Update(bossProgress, breathTimerTotal)
-	end--]]
+		DBM:Debug("updateBreathTimer updated with: "..bossProgress..", "..breathTimerTotal)
+	end
 end
 
 function mod:SpitTarget(targetname, uId)
 	if not targetname then return end
-	if targetname == UnitName("player") and self:AntiSpam(5, 5) then
+	if targetname == playerName and self:AntiSpam(5, 5) then
 		specWarnDebilitatingSpit:Show()
 		specWarnDebilitatingSpit:Play("targetyou")
 	else
@@ -157,13 +164,14 @@ function mod:OnCombatStart(delay)
 	self.vb.phase = 1
 	self.vb.fixateCount = 0
 	self.vb.bossPowerUpdateRate = 4
-	self.vb.comboCount = 0
+	self.vb.firstCrush = nil
+	self.vb.firstDissolve = nil
 	table.wipe(SpitStacks)
 	table.wipe(seenAdds)
 	timerDebilitatingSpitCD:Start(10.1-delay)--START
 	timerCrushCD:Start(15.1-delay)--Time til script begins
 	timerSlurryBreathCD:Start(26.1-delay)--Technically it should be 25 but there is a pause before boss begins gaining power
-	timerFixateCD:Start(self:IsMythic() and 16 or 31)
+	timerFixateCD:Start(self:IsMythic() and 16 or 31, 1)
 	if self:IsHard() then
 		berserkTimer:Start(360-delay)--Heroic confirmed, normal unknown
 	end
@@ -198,28 +206,34 @@ function mod:SPELL_CAST_START(args)
 	elseif (spellId == 318078 or spellId == 307260) and not seenAdds[args.sourceGUID] and self:AntiSpam(5, 3) then
 		self.vb.fixateCount = self.vb.fixateCount + 1
 		seenAdds[args.sourceGUID] = true
-		timerFixateCD:Start(self:IsMythic() and 16 or 30.2)
+		timerFixateCD:Start(self:IsMythic() and 16 or 30.2, self.vb.fixateCount+1)
 	elseif spellId == 306953 then
 		timerDebilitatingSpitCD:Start()
 	elseif spellId == 307478 then--Dissolve
 		if self:AntiSpam(11, 1) then
-			self.vb.comboCount = 0
+			self.vb.firstCrush = nil
+			self.vb.firstDissolve = nil
 		end
-		self.vb.comboCount = self.vb.comboCount + 1
-		--Only show taunt warning if you don't have debuff and it's 2nd or 3rd cast and you aren't already tanking
-		if self.vb.comboCount >= 1 and not DBM:UnitDebuff("player", 307471) and not self:IsTanking("player", "boss1", nil, true) then--Crush
-			specWarnCrushTaunt:Show(L.name)
-			specWarnCrushTaunt:Play("tauntboss")
+		--there is already a crush debuffed tank, and it is not us, therefor WE must taunt dissolve
+		--or, we are the dissolve debuffed tank and we need to tank this dissolve too
+		if not self:IsTanking("player", "boss1", nil, true) then
+			if (self.vb.firstCrush and self.vb.firstCrush ~= playerName) or (self.vb.firstDissolve and self.vb.firstDissolve == playerName) then
+				specWarnDissolveTaunt:Show(self.vb.firstCrush)
+				specWarnDissolveTaunt:Play("tauntboss")
+			end
 		end
 	elseif spellId == 307476 then--Crush
 		if self:AntiSpam(11, 1) then
-			self.vb.comboCount = 0
+			self.vb.firstCrush = nil
+			self.vb.firstDissolve = nil
 		end
-		self.vb.comboCount = self.vb.comboCount + 1
-		--Only show taunt warning if you don't have debuff and it's 2nd or 3rd cast and you aren't already tanking
-		if self.vb.comboCount >= 1 and not DBM:UnitDebuff("player", 307472) and not self:IsTanking("player", "boss1", nil, true) then--Dissolve
-			specWarnCrushTaunt:Show(L.name)
-			specWarnCrushTaunt:Play("tauntboss")
+		--there is already a dissolve debuffed tank, and it is not us, therefor WE must taunt crush
+		--or, we are the crush debuffed tank and we need to tank this crush too
+		if not self:IsTanking("player", "boss1", nil, true) then
+			if (self.vb.firstDissolve and self.vb.firstDissolve ~= playerName) or (self.vb.firstCrush and self.vb.firstCrush == playerName) then
+				specWarnCrushTaunt:Show(self.vb.firstCrush)
+				specWarnCrushTaunt:Play("tauntboss")
+			end
 		end
 	end
 end
@@ -227,7 +241,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 312528 or spellId == 306928 or spellId == 312529 or spellId == 306929 or spellId == 312530 or spellId == 306930 then--Breaths
-		self:Schedule(1.5, updateBreathTimer, self, true)--Delay so we do not get the boss at 100/100 energy
+		updateBreathTimer(self, true)
 	end
 end
 
@@ -239,8 +253,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnUncontrollablyRavenous:Show()
 		specWarnUncontrollablyRavenous:Play("stilldanger")
 	elseif spellId == 307471 then
+		if not self.vb.firstCrush then
+			self.vb.firstCrush = args.destName
+		end
 		warnCrush:Show(args.destName)
 	elseif spellId == 307472 then
+		if not self.vb.firstDissolve then
+			self.vb.firstDissolve = args.destName
+		end
 		warnDissolve:Show(args.destName)
 	elseif spellId == 307358 then
 		local amount = args.amount or 1
@@ -266,7 +286,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 306942 then
 		warnFrenzy:Show(args.destName)
 	elseif spellId == 318078 or spellId == 307260 then
-		warnFixate:CombinedShow(0.3, args.destName)
+		warnFixate:CombinedShow(0.3, self.vb.fixateCount, args.destName)
 		if args:IsPlayer() then
 			specWarnFixate:Show()
 			specWarnFixate:Play("targetyou")
@@ -316,7 +336,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		updateBreathTimer(self)
-	elseif spellId == 308149 and args:IsPlayer() then
+	elseif spellId == 314736 and args:IsPlayer() and self:AntiSpam(3, 4) then
 		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	elseif spellId == 312099 then
@@ -359,41 +379,19 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 mod.SPELL_AURA_REMOVED_DOSE = mod.SPELL_AURA_REMOVED
 
---[[
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
-	if spellId == 270290 and destGUID == UnitGUID("player") and self:AntiSpam(2, 4) then
+	if spellId == 314736 and destGUID == UnitGUID("player") and self:AntiSpam(3, 4) then
 		specWarnGTFO:Show(spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 152311 then
-
-	end
-end
-
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
-	if msg:find("spell:306448") then--Umbral Mantle
-		self.vb.phase = self.vb.phase + 1
-		warnUmbralMantle:Show()
-	elseif msg:find("spell:306934") then--Entropic Mantle
-		self.vb.phase = self.vb.phase + 1
-		warnEntropicMantle:Show()
-	elseif msg:find("spell:306932") then--Noxious Mantle
-		self.vb.phase = self.vb.phase + 1
-		warnNoxiousMantle:Show()
-	end
-end
---]]
-
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 307469 then--Crush & Dissolve Cover
+		self.vb.firstCrush = nil
+		self.vb.firstDissolve = nil
 		timerCrushCD:Start()
-	--elseif spellId == 306736 then--Slurry Breath
-		--updateBreathTimer(self)
 	end
 end
 
@@ -410,7 +408,7 @@ do
 	--Still not perfect because it seems to support non even numbers internally but api isn't gonna report only whole numbers
 	--I have two logs that have energy rate/timing pegged at exactly 5.85 where as it'd end up rounding to 6 since blizz would only send whole number energy updates thus shorting timer by teeny bit
 	--Case and point to above issue 17.0, 17.1, 21.9, 17.0, 17.1. to get 17.1 update rate would HAVE to be less than 6 but greater than 5. About 5.85
-	function mod:UNIT_POWER_FREQUENT(uId, type)
+	function mod:UNIT_POWER_UPDATE(uId)
 		local bossPower = UnitPower("boss1") --Get Boss Power
 		local currentRate = bossPower - lastPower
 		lastPower = bossPower

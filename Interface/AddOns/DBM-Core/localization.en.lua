@@ -1,9 +1,11 @@
 DBM_DEADLY_BOSS_MODS				= "Deadly Boss Mods"
 DBM_DBM								= "DBM"
-local day, _, month = C_DateAndTime.GetCurrentCalendarTime()
-if day == 1 and month == 4 then
-	DBM_DEADLY_BOSS_MODS				= "Harmless Boss Mods"
-	DBM_DBM								= "HBM"
+if C_DateAndTime and C_DateAndTime.GetCurrentCalendarTime then
+	local day, _, month = C_DateAndTime.GetCurrentCalendarTime()
+	if day and month and day == 1 and month == 4 then
+		DBM_DEADLY_BOSS_MODS				= "Harmless Boss Mods"
+		DBM_DBM								= "HBM"
+	end
 end
 
 DBM_HOW_TO_USE_MOD					= "Welcome to "..DBM_DBM..". Type /dbm help for a list of supported commands. To access options type /dbm in your chat to begin configuration. Load specific zones manually to configure any boss specific settings to your liking as well. DBM will setup defaults for your spec, but you may want to fine tune these."
@@ -286,6 +288,7 @@ DBM_CORE_NORTH						= "North"
 DBM_CORE_SOUTH						= "South"
 DBM_CORE_INTERMISSION				= "Intermission"--No blizz global for this, and will probably be used in most end tier fights with intermission phases
 DBM_CORE_ORB						= "Orb"
+DBM_CORE_ORBS						= "Orbs"
 DBM_CHEST							= "Chest"--As in Treasure 'Chest'. Not Chest as in body part.
 DBM_NO_DEBUFF						= "Not %s"--For use in places like info frame where you put "Not Spellname"
 DBM_ALLY							= "Ally"--Such as "Move to Ally"
@@ -336,6 +339,7 @@ DBM_CORE_AUTO_ANNOUNCE_TEXTS = {
 	cast		= "Casting %s: %.1f sec",
 	soon		= "%s soon",
 	sooncount	= "%s (%%s) soon",
+	countdown	= "%s in %%ds",
 	prewarn		= "%s in %s",
 	bait		= "%s soon - bait now",
 	stage		= "Stage %s",
@@ -359,6 +363,7 @@ DBM_CORE_AUTO_ANNOUNCE_OPTIONS = {
 	cast		= "Show warning when $spell:%s is being cast",
 	soon		= prewarnOption,
 	sooncount	= prewarnOption,
+	countdown	= "Show pre-warning countdown spam for $spell:%s",
 	prewarn 	= prewarnOption,
 	bait		= "Show pre-warning (to bait) for $spell:%s",
 	stage		= "Announce Stage %s",
