@@ -20,7 +20,7 @@ TCL.Data.loadData(
 			{ 157120, 3792, -1, -1, 120, {nil,{0.7507, 0.6812 },{0.7507, 0.6812 }}, 57258, 57258, nil, nil, { items = {} }, }, -- Fangtaker Orsa
 			{ 158633, 3885, -1, -1, 120, {{0.5500, 0.5300 },nil,nil}, 57680, 57680, nil, nil, { items = {175140} }, }, -- Gaze of N'Zoth
 			{ 158597, 3883, -1, -1, 120, {{0.5476, 0.4309 },nil,nil}, 57675, 57675, nil, nil, { items = {} }, }, -- High Executor Yothrim
-			{ 158528, 3875, -1, -1, 120, {{0.5368, 0.7933 },nil,nil}, 57664, 57664, nil, nil, { items = {} }, }, -- High Guard Reshef
+			{ 158528, 3875, -1, -1, 120, {{0.476, 0.774 },nil,nil}, 57664, 57664, nil, nil, { items = {} }, }, -- High Guard Reshef
 			{ 162163, 4082, -1, -1, 120, {nil,{0.4240, 0.5803 },nil}, 58701, 58701, nil, nil, { items = {} }, }, -- High Priest Ytaessis
 			{ 151995, 3569, -1, -1, 120, {nil,nil,{0.8086, 0.4755 }}, 55502, 55502, nil, nil, { items = {} }, }, -- Hik-ten the Taskmaster
 			{ 160623, 3963, -1, -1, 120, {{0.6004, 0.3952 },nil,nil}, 58206, 58206, nil, nil, { items = {} }, }, -- Hungering Miasma
@@ -33,7 +33,7 @@ TCL.Data.loadData(
 			{ 152677, 3622, -1, -1, 120, {nil,nil,{0.6198, 0.2567 }}, 55684, 55684, nil, nil, { items = {} }, }, -- Nebet the Ascended
 			{ 162196, 4058, -1, -1, 120, {{0.3506, 0.1729 },{0.3506, 0.1729 },{0.3506, 0.1729 }}, 58681, 58681, nil, nil, { items = {} }, }, -- Obsidian Annihilator
 			{ 162142, 4087, -1, -1, 120, {nil,{0.3782, 0.6028 },nil}, 58693, 58693, nil, nil, { items = {} }, }, -- Qho
-			{ 157470, 3889, -1, -1, 120, {{0.5057, 0.8832 },nil,nil}, 57436, 57436, nil, nil, { items = {} }, }, -- R'aas the Anima Devourer
+			{ 157470, 3889, -1, -1, 120, {{0.50, 0.8832 },nil,nil}, 57436, 57436, nil, nil, { items = {} }, }, -- R'aas the Anima Devourer
 			{ 156299, 3886, -1, -1, 120, {{0.5795, 0.7664 },{0.5795, 0.7664 },nil}, 57430, 57430, nil, nil, { items = {} }, }, -- R'khuzj The Unfathomable
 			{ 162173, 4088, -1, -1, 120, {nil,{0.2890, 0.1765 },nil}, 58864, 58864, nil, nil, { items = {} }, }, -- R'krox the Runt
 			{ 157146, 3794, -1, -1, 120, {nil,nil,{0.6859, 0.3204 }}, 57273, 57273, nil, nil, { items = {174753} }, }, -- Rotfeaster
@@ -42,7 +42,7 @@ TCL.Data.loadData(
 			{ 161033, 4009, -1, -1, 120, {{0.5205, 0.3798 },nil,nil}, 58333, 58333, nil, nil, { items = {} }, }, -- Shadowmaw
 			{ 156654, 3894, -1, -1, 120, {{0.5854, 0.8282 },nil,nil}, 57432, 57432, nil, nil, { items = {} }, }, -- Shol'thoss the Doomspeaker
 			{ 160532, 3962, -1, -1, 120, {{0.6091, 0.7478 },{0.6091, 0.7478 },nil}, 58169, 58169, nil, nil, { items = {} }, }, -- Shoth the Darkened
-			{ 157476, 3891, -1, -1, 120, {{0.5549, 0.7972 },nil,nil}, 57439, 57439, nil, nil, { items = {} }, }, -- Shugshul the Flesh Gorger
+			{ 157476, 3891, -1, -1, 120, {{0.5549, 0.815 },nil,nil}, 57439, 57439, nil, nil, { items = {} }, }, -- Shugshul the Flesh Gorger
 			{ 162140, 4089, -1, -1, 120, {nil,{0.2123, 0.6105 },nil}, 58697, 58697, nil, nil, { items = {174476} }, }, -- Skikx'traz
 			{ 162372, 4107, -1, -1, 120, {nil,{0.6668, 0.7074 },{0.6668, 0.7074 }}, 58715, 58715, nil, nil, { items = {} }, }, -- Spirit of Cyrus the Black
 			{ 151878, 4109, -1, -1, 120, {{0.7901, 0.6393 },{0.7901, 0.6393 },{0.7901, 0.6393 }}, 58613, 58613, nil, nil, { items = {} }, }, -- Sun King Nahkotep
@@ -60,11 +60,11 @@ TCL.Data.loadData(
 			{ 157188, 3809, -1, -1, 120, {nil,nil,{0.8440, 0.4720 }}, 57285, 57285, nil, nil, { items = {} }, }, -- The Tomb Widow
 			{ 162352, 4106, -1, -1, 120, {nil,{0.5000, 0.4000 },{0.5000, 0.4000 }}, 58716, 58716, nil, nil, { items = {} }, }, -- Spirit of Dark Ritualist Zakahn
 			{ 158531, 3876, -1, -1, 120, {{0.5050, 0.7496 },nil,nil}, 57665, 57665, nil, nil, { items = {} }, }, -- Corrupted Neferset Guard
-			{ 157593, 3878, -1, -1, 120, {nil,nil,nil}, 57667, 57667, nil, nil, { items = {} }, }, -- Amalgamation of Flesh
+			{ 157593, 3878, -1, -1, 120, {{0.605, 0.7276 },nil,nil}, 57667, 57667, nil, nil, { items = {174478} }, }, -- Amalgamation of Flesh
 			{ 158595, 3882, -1, -1, 120, {{0.6500, 0.7200 },nil,nil}, 57673, 57673, nil, nil, { items = {} }, }, -- Thoughtstealer Vos
-			{ 157473, 3887, -1, -1, 120, {nil,nil,nil}, 57438, 57438, nil, nil, { items = {} }, }, -- Yiphrim the Will Ravager
-			{ 157469, 3890, -1, -1, 120, {nil,nil,nil}, 57435, 57435, nil, nil, { items = {} }, }, -- Zoth'rum the Intellect Pillager
-			{ 157390, 3892, -1, -1, 120, {nil,nil,nil}, 57434, 57434, nil, nil, { items = {} }, }, -- R'oyolok the Reality Eater
+			{ 157473, 3887, -1, -1, 120, {{0.5100, 0.8000 },nil,nil}, 57438, 57438, nil, nil, { items = {} }, }, -- Yiphrim the Will Ravager
+			{ 157469, 3890, -1, -1, 120, {{0.5521, 0.7932 },nil,nil}, 57435, 57435, nil, nil, { items = {} }, }, -- Zoth'rum the Intellect Pillager
+			{ 157390, 3892, -1, -1, 120, {{0.51, 0.8832 },nil,nil}, 57434, 57434, nil, nil, { items = {} }, }, -- R'oyolok the Reality Eater
 		}
 )
 TCL.Data.loadData(
@@ -81,11 +81,11 @@ TCL.Data.loadData(
 			{ 154495, 3703, -1, -1, 120, {{0.5426, 0.6272 },nil,nil}, 56303, 56303, nil, nil, { items = {174474, 175140} }, }, -- Will of N'Zoth
 			{ 154559, 3733, -1, -1, 120, {{0.6699, 0.6658 },nil,nil}, 56323, 56323, nil, nil, { items = {} }, }, -- Deeplord Zrihj
 			{ 154600, 3734, -1, -1, 120, {nil,nil,{0.4751, 0.6521 }}, 56332, 56332, nil, nil, { items = {} }, }, -- Teng the Awakened
-			{ 155958, 4111, -1, -1, 120, {nil,{0.3084, 0.2398 },{0.3084, 0.2398 }}, 58507, 58507, nil, nil, { items = {174873} }, }, -- Tashara
+			{ 155958, 4111, -1, -1, 120, {nil,nil,{0.3084, 0.2398 }}, 58507, 58507, nil, nil, { items = {174873} }, }, -- Tashara
 			{ 156083, 3765, -1, -1, 120, {nil,nil,{0.4618, 0.5713 }}, 56954, 56954, nil, nil, { items = {} }, }, -- Sanguifang
 			{ 157153, 3795, -1, -1, 120, {nil,nil,{0.2951, 0.3800 }}, 57344, 57344, nil, nil, { items = {173887} }, }, -- Ha-Li
 			{ 157160, 3797, -1, -1, 120, {nil,nil,{0.1259, 0.2788 }}, 57345, 57345, nil, nil, { items = {174841} }, }, -- Houndlord Ren
-			{ 157162, 3798, -1, -1, 120, {nil,{0.2190, 0.1234 },{0.2190, 0.1234 }}, 57346, 57346, nil, nil, { items = {} }, }, -- Rei Lun
+			{ 157162, 3798, -1, -1, 120, {nil,nil,{0.2190, 0.1234 }}, 57346, 57346, nil, nil, { items = {174649} }, }, -- Rei Lun
 			{ 157171, 3805, -1, -1, 120, {nil,nil,{0.2822, 0.4048 }}, 57347, 57347, nil, nil, { items = {} }, }, -- Heixi the Stonelord
 			{ 157176, 3807, -1, -1, 120, {{0.5188, 0.4116 },nil,nil}, 57342, 57342, nil, nil, { items = {174473} }, }, -- The Forgotten
 			{ 157183, 3808, -1, -1, 120, {nil,nil,{0.1676, 0.6672 }}, 58296, 58296, nil, nil, { items = {} }, }, -- Coagulated Anima

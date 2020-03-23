@@ -76,7 +76,7 @@ select(2, ...).TomCatsLibs.Locales.AddLocaleLookup("enUS", {
     ["156083_DESC"] = NEEDED, -- Sanguifang
     ["157153_DESC"] = NEEDED, -- Ha-Li
     ["157160_DESC"] = NEEDED, -- Houndlord Ren
-    ["157162_DESC"] = NEEDED, -- Rei Lun
+    ["157162_DESC"] = "Cave entrance at 22,09, 24,03.  Rei Lun has a low chance of dropping the Pristine Cloud Serpent Scale which can then be used to purchase a mount (Rajani Warserpent) from the Rajani Quartermaster", -- Rei Lun
     ["157171_DESC"] = NEEDED, -- Heixi the Stonelord
     ["157176_DESC"] = NEEDED, -- The Forgotten
     ["157183_DESC"] = NEEDED, -- Coagulated Anima

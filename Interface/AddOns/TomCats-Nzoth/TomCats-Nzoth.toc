@@ -2,7 +2,7 @@
 ## Title: TomCat's Tours: Rares of Visions of N'zoth
 ## Author: TomCat
 ## X-Website: https://www.tomcatstours.com
-## Version: 1.4.16
+## Version: 1.4.23
 ## DefaultState: enabled
 ## SavedVariablesPerCharacter: TomCats_Nzoth_Character
 ## OptionalDeps: TomCats,HandyNotes,TomTom

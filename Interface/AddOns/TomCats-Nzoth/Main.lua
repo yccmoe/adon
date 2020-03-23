@@ -9,7 +9,7 @@ local newFilesSinceVersion = convertVersionToNumber("1.4.0")
 if (newFilesSinceVersion > addonTOCVersion) then
     DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Warning: TomCat's Tours: Visions of N'zoth requires that you restart WoW in order for the recent update to function properly|r")
 end
-local tomcatsMinVersion = convertVersionToNumber("1.4.1")
+local tomcatsMinVersion = convertVersionToNumber("1.4.12")
 local tomcatsCurrentVersion = 0
 if TomCats and TomCats.version then
     tomcatsCurrentVersion = convertVersionToNumber(TomCats.version)
@@ -474,7 +474,7 @@ if (TomCats and TomCats.Register) then
                 }
             },
             name = "Rares of Visions of N'zoth",
-            version = "1.4.16",
+            version = "1.4.23",
             raresLogHandlers = {
                 [tonumber("1527")] = {
                     raresLog = GetRaresLog1
