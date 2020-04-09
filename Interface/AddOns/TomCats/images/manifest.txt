@@ -16,6 +16,7 @@
 00016: Download
 00017: Attention
 00018: Rares of N'zoth icon
-00019-00030: Reserved for future use
+00019: square-button-mask
+00020-00100: Reserved for future use
 
 Named images: To be removed upon update to dependent addons being released
