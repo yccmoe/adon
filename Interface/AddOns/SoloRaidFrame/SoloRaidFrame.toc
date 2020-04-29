@@ -1,0 +1,7 @@
+## Interface: 80000
+## Title: Blizzard Raid Frames - Solo Frame
+## Author: Nokami
+## Version: 1.3
+code.lua
+
+
